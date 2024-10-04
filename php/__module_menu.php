@@ -8,22 +8,6 @@ DEFINE(__NAMESPACE__.'\MODULE_SLUG', strtolower(basename(dirname(__DIR__))));
 
 DEFINE(__NAMESPACE__.'\MODULE_PATH', plugin_dir_path(__DIR__));
 
-add_filter('sim_submenu_description', function($description, $moduleSlug){
-	//module slug should be the same as the constant
-	if($moduleSlug != MODULE_SLUG)	{
-		return $description;
-	}
-
-	ob_start();
-	?>
-	<p>
-		This module creates an integration with trello.<br>
-		It is able to import new users and update existing users based on trello card contents.<br>
-	</p>
-	<?php
-	return ob_get_clean();
-},10,2);
-
 add_filter('sim_submenu_options', function($optionsHtml, $moduleSlug, $settings){
 	//module slug should be the same as grandparent folder name
 	if($moduleSlug != MODULE_SLUG){
